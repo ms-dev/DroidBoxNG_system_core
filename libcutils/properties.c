@@ -37,9 +37,8 @@ int property_set(const char *key, const char *value)
 }
 
 int property_get(const char *key, char *value, const char *default_value)
-{
+{  
     int len;
-
     len = __system_property_get(key, value);
     if(len > 0) {
         return len;
@@ -55,6 +54,7 @@ int property_get(const char *key, char *value, const char *default_value)
 int property_list(void (*propfn)(const char *key, const char *value, void *cookie), 
                   void *cookie)
 {
+    ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"property_list\" } }");
     char name[PROP_NAME_MAX];
     char value[PROP_VALUE_MAX];
     const prop_info *pi;
