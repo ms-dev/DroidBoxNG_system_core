@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "properties"
+//#define LOG_TAG "properties"
+#define LOG_TAG "DroidBox"
 
 #include <stdlib.h>
 #include <string.h>
@@ -37,7 +38,42 @@ int property_set(const char *key, const char *value)
 }
 
 int property_get(const char *key, char *value, const char *default_value)
-{  
+{
+    //Check for calling common properties
+    if(!strcmp(key, "ro.secure")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    } 
+    else if(!strcmp(key, "ro.kernel.qemu")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "qemu.hw.mainkeys")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "ro.build.description")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "ro.build.fingerprint")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "net.eth0.dns1")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "rild.libpath")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "ro.radio.use-ppp")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "gsm.version.baseband")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "ro.build.display.id")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    else if(!strcmp(key, "init.svc.console")) {
+        ALOGW("DroidBox: { \"VM-Evasion\": { \"operation\": \"property\", \"name\": \"%s\" } }", key);
+    }
+    
     int len;
     len = __system_property_get(key, value);
     if(len > 0) {
